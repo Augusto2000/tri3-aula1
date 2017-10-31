@@ -2,6 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+Idle - 0
+Jump - 1
+Run - 2
+Falling - 3
+Shooting - 4
+Hurt - 5
+*/
+
 public class PlayerCtrl : MonoBehaviour {
 
 	public float horizontalSpeed = 10f;
@@ -12,6 +22,9 @@ public class PlayerCtrl : MonoBehaviour {
 	Rigidbody2D rb;
 
 	SpriteRenderer sr;
+
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -52,6 +65,9 @@ public class PlayerCtrl : MonoBehaviour {
 		 else if (speed > 0f) {
 			 sr.flipX = false;
 		 }
+
+ 
+
 
 	}
 
