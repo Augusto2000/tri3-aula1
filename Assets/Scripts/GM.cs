@@ -10,6 +10,8 @@ public class GM : MonoBehaviour {
 	public GameObject playerPrefab;
 
 	PlayerController player;
+	public UI ui;
+	GameData data = new GameData();
 
 	public float timeToRespawn = 2f;
 
@@ -32,6 +34,16 @@ public class GM : MonoBehaviour {
 				player = obj.GetComponent<PlayerController>();
 			}
 		}
+		DisplayHudData();
+		
+	}
+
+	void DisplayHudData() {
+		ui.hud.txtCoinCount.text = "x " + data.coinCount;
+	}
+
+	public void IncrementeCoinCount(){
+		data.coinCount++;
 	}
 
 	public void RespawnPlayer(){
