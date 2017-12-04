@@ -12,7 +12,7 @@ Shooting - 4
 Hurt - 5
 */
 
-public class PlayerCtrl : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
 	public float horizontalSpeed = 10f;
 
@@ -48,7 +48,9 @@ public class PlayerCtrl : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+		if(transform.position.y < GM.instance.yMinLive){
+			GM.instance.KillPlayer();
+		}
 		isGrounded = Physics2D.OverlapBox(new Vector2(feet.position.x, feet.position.y), new Vector2(feetWidth, feetHeight), 360.0f, whatIsGround);
 
 
