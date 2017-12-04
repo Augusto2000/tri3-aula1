@@ -126,6 +126,7 @@ public class PlayerController : MonoBehaviour {
 
    void OnTriggerEnter2D(Collider2D other){
 		if(other.gameObject.CompareTag("Coin")){
+			SFxManager.instance.ShowCoinParticles(other.gameObject);
 			Destroy(other.gameObject);
 		}
    }
