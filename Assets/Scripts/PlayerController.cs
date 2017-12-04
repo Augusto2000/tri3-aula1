@@ -52,23 +52,18 @@ public class PlayerController : MonoBehaviour {
 			GM.instance.KillPlayer();
 		}
 		isGrounded = Physics2D.OverlapBox(new Vector2(feet.position.x, feet.position.y), new Vector2(feetWidth, feetHeight), 360.0f, whatIsGround);
-
-
 		float horizontalInput = Input.GetAxisRaw("Horizontal"); // -1: esquerda, 1:direita
 		float horizontalPlayerSpeed = horizontalSpeed * horizontalInput;
         if(horizontalPlayerSpeed != 0) {
 			MoveHorizontal(horizontalPlayerSpeed);
 		}
-
 		else {
 			StopMovingHorizontal();
 		}
 
 		if (Input.GetButtonDown("Jump")) {
 			Jump();
-
 		}
-
 			ShowFalling();
 	}
 
@@ -86,11 +81,7 @@ public class PlayerController : MonoBehaviour {
 		 if (!isJumping) {
 			 anim.SetInteger("State", 2);
 		 }
-
-
 	}
-
-
 	void StopMovingHorizontal(){
 		rb.velocity = new Vector2(0f, rb.velocity.y);
 		if (!isJumping) {
@@ -105,7 +96,6 @@ public class PlayerController : MonoBehaviour {
 		}
 
 	}
-
 
    void Jump(){
 	   if (isGrounded) {
@@ -123,10 +113,6 @@ public class PlayerController : MonoBehaviour {
 			canDoubleJump = false; 
 		   }
    }
-
-
-
-
    		void EnableDoubleJump() {
 			   canDoubleJump = true;
 		   }
@@ -138,7 +124,9 @@ public class PlayerController : MonoBehaviour {
 	   }
    }
 
-
-
-
+   void OnTriggerEnter2D(Collider2D other){
+		if(other.gameObject.CompareTag("Coin")){
+			Destroy(other.gameObject);
+		}
+   }
 }
